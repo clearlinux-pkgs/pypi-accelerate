@@ -4,7 +4,7 @@
 #
 Name     : pypi-accelerate
 Version  : 0.17.1
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/85/c8/3bdcba8846a4c198f5950d10ac3e83c14d43d2f35d52d3beb467022a9549/accelerate-0.17.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/85/c8/3bdcba8846a4c198f5950d10ac3e83c14d43d2f35d52d3beb467022a9549/accelerate-0.17.1.tar.gz
 Summary  : Accelerate
@@ -83,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1678899291
+export SOURCE_DATE_EPOCH=1678984272
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
