@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-accelerate
-Version  : 0.22.0
-Release  : 10
-URL      : https://files.pythonhosted.org/packages/f2/40/e7964be5d1498f5b74889f76660c43589455de09c33b3a15a0b839b4b283/accelerate-0.22.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/f2/40/e7964be5d1498f5b74889f76660c43589455de09c33b3a15a0b839b4b283/accelerate-0.22.0.tar.gz
+Version  : 0.23.0
+Release  : 11
+URL      : https://files.pythonhosted.org/packages/61/93/a4537aa9ce54ad316e818e3abcc93d1cd0b02c603093f270eaca0a201911/accelerate-0.23.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/61/93/a4537aa9ce54ad316e818e3abcc93d1cd0b02c603093f270eaca0a201911/accelerate-0.23.0.tar.gz
 Summary  : Accelerate
 Group    : Development/Tools
 License  : Apache-2.0
@@ -21,10 +21,11 @@ BuildRequires : buildreq-distutils3
 %define debug_package %{nil}
 
 %description
-<!---
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Copyright 2021 The HuggingFace Team. All rights reserved.
+        
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
 
 %package bin
 Summary: bin components for the pypi-accelerate package.
@@ -57,6 +58,7 @@ Summary: python3 components for the pypi-accelerate package.
 Group: Default
 Requires: python3-core
 Provides: pypi(accelerate)
+Requires: pypi(huggingface_hub)
 Requires: pypi(numpy)
 Requires: pypi(packaging)
 Requires: pypi(psutil)
@@ -68,10 +70,10 @@ python3 components for the pypi-accelerate package.
 
 
 %prep
-%setup -q -n accelerate-0.22.0
-cd %{_builddir}/accelerate-0.22.0
+%setup -q -n accelerate-0.23.0
+cd %{_builddir}/accelerate-0.23.0
 pushd ..
-cp -a accelerate-0.22.0 buildavx2
+cp -a accelerate-0.23.0 buildavx2
 popd
 
 %build
@@ -79,7 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692832463
+export SOURCE_DATE_EPOCH=1694790534
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -126,6 +128,7 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/accelerate
 /usr/bin/accelerate-config
+/usr/bin/accelerate-estimate-memory
 /usr/bin/accelerate-launch
 
 %files license
