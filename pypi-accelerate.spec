@@ -6,10 +6,10 @@
 # autospec commit: ab27b0e
 #
 Name     : pypi-accelerate
-Version  : 0.26.0
-Release  : 18
-URL      : https://files.pythonhosted.org/packages/36/30/2fd7027a6bb9549da4eff4f890685bbb32c77d10890c78d476523bba582c/accelerate-0.26.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/36/30/2fd7027a6bb9549da4eff4f890685bbb32c77d10890c78d476523bba582c/accelerate-0.26.0.tar.gz
+Version  : 0.26.1
+Release  : 19
+URL      : https://files.pythonhosted.org/packages/19/c9/9efe35c86e1774dc13350cda2de0726a6f0256b507a1fad9c85a1fbe721b/accelerate-0.26.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/19/c9/9efe35c86e1774dc13350cda2de0726a6f0256b507a1fad9c85a1fbe721b/accelerate-0.26.1.tar.gz
 Summary  : Accelerate
 Group    : Development/Tools
 License  : Apache-2.0
@@ -65,10 +65,10 @@ python3 components for the pypi-accelerate package.
 
 
 %prep
-%setup -q -n accelerate-0.26.0
-cd %{_builddir}/accelerate-0.26.0
+%setup -q -n accelerate-0.26.1
+cd %{_builddir}/accelerate-0.26.1
 pushd ..
-cp -a accelerate-0.26.0 buildavx2
+cp -a accelerate-0.26.1 buildavx2
 popd
 
 %build
@@ -76,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1704923199
+export SOURCE_DATE_EPOCH=1704998153
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
