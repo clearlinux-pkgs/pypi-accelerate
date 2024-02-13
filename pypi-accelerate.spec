@@ -6,10 +6,10 @@
 # autospec commit: da8b975
 #
 Name     : pypi-accelerate
-Version  : 0.27.0
-Release  : 20
-URL      : https://files.pythonhosted.org/packages/fa/f7/ab508d97f0e137aae815b1327b583d93781c17445c75de5d3179870b907b/accelerate-0.27.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/fa/f7/ab508d97f0e137aae815b1327b583d93781c17445c75de5d3179870b907b/accelerate-0.27.0.tar.gz
+Version  : 0.27.2
+Release  : 21
+URL      : https://files.pythonhosted.org/packages/7a/03/0cf4ade7087659e8892d9082fb678132f352a15b424eee9c91d2de9b66ad/accelerate-0.27.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/7a/03/0cf4ade7087659e8892d9082fb678132f352a15b424eee9c91d2de9b66ad/accelerate-0.27.2.tar.gz
 Summary  : Accelerate
 Group    : Development/Tools
 License  : Apache-2.0
@@ -72,13 +72,10 @@ python3 components for the pypi-accelerate package.
 
 
 %prep
-%setup -q -n accelerate-0.27.0
-cd %{_builddir}/accelerate-0.27.0
+%setup -q -n accelerate-0.27.2
+cd %{_builddir}/accelerate-0.27.2
 pushd ..
-cp -a accelerate-0.27.0 buildavx2
-popd
-pushd ..
-cp -a accelerate-0.27.0 buildapx
+cp -a accelerate-0.27.2 buildavx2
 popd
 
 %build
@@ -86,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1707667287
+export SOURCE_DATE_EPOCH=1707851089
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -108,16 +105,6 @@ CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m build --wheel --skip-dependency-check --no-isolation
-
-popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
@@ -154,17 +141,7 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
 popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m installer --destdir=%{buildroot}-va dist/*.whl
-popd
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
-/usr/bin/elf-move.py apx %{buildroot}-va %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
