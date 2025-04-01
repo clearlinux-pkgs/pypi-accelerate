@@ -1,5 +1,5 @@
 PKG_NAME := pypi-accelerate
-URL = https://files.pythonhosted.org/packages/a9/4c/a61132924da12cef62a88c04b5825246ab83dcc1bae6291d098cfcb0b72d/accelerate-1.5.2.tar.gz
+URL = https://files.pythonhosted.org/packages/8a/6e/c29a1dcde7db07f47870ed63e5124086b11874ad52ccd533dc1ca2c799da/accelerate-1.6.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
